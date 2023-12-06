@@ -8,9 +8,9 @@
 | Positive Prompt & Guidance scale | Classfier-free Guidance setting.  And Positive Prompt can be highlevelly seen as the features in the input image that you want to preserve. |
 | Target Prompt | prompt used to describe the output image (shoude be similar with the source prompt,  including what you want to edit to, see examples) |
 | Negative Prompt & Guidance scale | Classfier-free Guidance setting. Negative prompt is used to exclude the features that you dont want to generate. |
-| Local blend & Thresh | When you only want to edit some part of the whole image, you should use local blend. Local blend should come from a part of the Target prompt, used to describe the area of the image that you want to edit(see example). A higher threshold means a smaller editing area, while a lower threshold means a larger area. |
-| Mutual blend & Thresh | When you find the model edit something you want to keep, you should use mutual blend. Mutual blend should come from a common part of the Source prompt and Target prompt, used to describe the area of the image that you want preserve (exactly same, see example). A higher threshold means a smaller area that preserved, while a lower threshold means a larger area. |
-| Same part of Local blend & Mutual blend | the same part of local blend and mutual blend represents the thing that you want to partially edit(e.g. postures, views, actions). (See example) |
+| Target blend & Thresh | When you only want to edit some part of the whole image, you should use target blend. Target blend should come from a part of the Target prompt, used to describe the area of the image that you want to edit(see example). A higher threshold means a smaller editing area, while a lower threshold means a larger area. |
+| Mutual blend & Thresh | When you find the model edit something you want to keep, you should use source blend. Mutual blend should come from a common part of the Source prompt and Target prompt, used to describe the area of the image that you want preserve (exactly same, see example). A higher threshold means a smaller area that preserved, while a lower threshold means a larger area. |
+| Same part of Target blend & Mutual blend | the same part of target blend and source blend represents the thing that you want to partially edit(e.g. postures, views, actions). (See example) |
 | Cross replace steps | Cross-attention control steps. A smaller value means weaker control, which means less consistency. |
 | Self replace steps | Self-attention control steps. A smaller value means weaker control, which means less consistency. |
 | Denoising Model & Strength | The denoising intensity, the smaller the value, the less modifications and higher consistency. Too low intensity may lead to modification failure. |
@@ -33,7 +33,7 @@ And then, input the target prompt as you like based on your source prompt. You c
 
 ### Change words
 
-Step 3, **Change word “cat” to “tiger”**, (Step 4) and set the local blend as “tiger”, self replace steps as 0.7. (Step 5) After hitting the run button, you can get the result as below.  **We will talk about those settings in the following parts.**
+Step 3, **Change word “cat” to “tiger”**, (Step 4) and set the target blend as “tiger”, self replace steps as 0.7. (Step 5) After hitting the run button, you can get the result as below.  **We will talk about those settings in the following parts.**
 
 When we set the Guidance scale = 1 as below, we may find that the output image is not “tiger enough”
 
@@ -45,13 +45,13 @@ In this case, (Step 6 and 7) we can use a larger guidance scale, we say 2, and c
 
 ### Add words
 
-Back to the second step, in this time we **add “red” as the prefix of “cat”**, (as step 3), and (Step 4) set the guidance scale of Target prompt to 2, local blend as “cat”, both of cross and self replace steps as 0.9. (Step 5) After hitting the run button, you can get the result as below. **We will talk about those settings in the following parts.**
+Back to the second step, in this time we **add “red” as the prefix of “cat”**, (as step 3), and (Step 4) set the guidance scale of Target prompt to 2, target blend as “cat”, both of cross and self replace steps as 0.9. (Step 5) After hitting the run button, you can get the result as below. **We will talk about those settings in the following parts.**
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%204.png)
 
 ### Delete words
 
-This time we reuse the previous output as our input, and **remove the word “red”** from the previous prompt. In this time, we set the guidance scale of Target prompt to 2, local blend as “cat”, both of cross and self replace steps as 0.9.  After hitting the run button, you can get the result as below. **We will talk about those settings in the following parts.**
+This time we reuse the previous output as our input, and **remove the word “red”** from the previous prompt. In this time, we set the guidance scale of Target prompt to 2, target blend as “cat”, both of cross and self replace steps as 0.9.  After hitting the run button, you can get the result as below. **We will talk about those settings in the following parts.**
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%205.png)
 
@@ -67,31 +67,31 @@ And positive prompt plays the opposite effect. If we input ”red” as our posi
 
 ### Now let's take a closer look at how each parameter works.
 
-## Local & Mutual Blend
+## Target & Mutual Blend
 
-### Local blend: Like Prompt2Prompt, we support local blend in our editing, and here is an example.
+### Target blend: Like Prompt2Prompt, we support target blend in our editing, and here is an example.
 
 We reuse the previous input image for test, and we want to edit the cat to a tiger. If we only use source prompt and target prompt, we may find that the whole image will be edited as below.
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%208.png)
 
-And in most of time, we only want to edit some parts of the original image. In this case, we can use “tiger” as our local blend, which means only the part of tiger will be edited.
+And in most of time, we only want to edit some parts of the original image. In this case, we can use “tiger” as our target blend, which means only the part of tiger will be edited.
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%209.png)
 
-If you want to expand the scope of editing, you can reduce the threshold of local blend. Generally speaking, a higher threshold means a smaller area, while a lower threshold means a larger editing area.
+If you want to expand the scope of editing, you can reduce the threshold of target blend. Generally speaking, a higher threshold means a smaller area, while a lower threshold means a larger editing area.
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%2010.png)
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%2011.png)
 
-### Mutual blend: Sometimes you may find that the model edits something you don’t want to edit, and you really want to keep those stuffs, you can use mutual blend.
+### Mutual blend: Sometimes you may find that the model edits something you don’t want to edit, and you really want to keep those stuffs, you can use source blend.
 
 For example, if we want to change the background of the following example from the grass to a forest, we may use prompts like below:
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%2012.png)
 
-However, this time we find that the shepherd dog, which we want to keep, has also been edited. In this case, we may use “shepherd dog” as our mutual blend, and then you will get the following result:
+However, this time we find that the shepherd dog, which we want to keep, has also been edited. In this case, we may use “shepherd dog” as our source blend, and then you will get the following result:
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%2013.png)
 
