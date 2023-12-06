@@ -101,6 +101,12 @@
                         <div class="column has-text-centered">
                             <div class="publication-links">
                                 <span class="link-block">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                        <span style="font-size: 24px;">🔥</span><span>User Guideline & Handbook</span>
+                                      </a>
+                                    </span>
+                                </br>
+                                <span class="link-block">
                                     <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
                                       <span class="icon">
                                         <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
@@ -132,10 +138,7 @@
                                   </span>
                                 <span class="link-block">
                                 <a href="http://sled-snowbird.eecs.umich.edu/" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> Font Awesome fontawesome.com -->
-                                    </span>
-                                    <span>Demo</span>
+                                    <span style="font-size: 24px;">🔥</span><span>Demo</span>
                                 </a>
                                 </span>
                                 <span class="link-block">
@@ -183,9 +186,10 @@
                 <!-- <h2 class="title is-3">InfEdit-to-image Generation</h2> -->
                 <div class="has-text-justified">
                     <p>
-                        We present an inversion-free editing (InfEdit) method that allows for consistent editing
-                        at both the semantic and spatial levels, catering to intricate modifications without compromising on the image's integrity and explicit inversion. Through extensive experiments, InfEdit shows strong performance in complex editing
-                        tasks and also maintains a seamless workflow (about 1 second on one A40), demonstrating the potential for real-time applications.
+                        We present an <b>inversion-free editing (InfEdit)</b> method that allows for consistent editing at both the semantic and spatial levels, 
+                        catering to intricate modifications without compromising on the image's integrity and explicit inversion. 
+                        Through extensive experiments, InfEdit shows strong performance in complex editing tasks and also maintains a seamless workflow (less than 3 seconds on one A40), 
+                        demonstrating the potential for real-time applications.
                     </p>
                     <br>
                 </div>
@@ -367,6 +371,7 @@
         <!--/ Matting. -->
         <div class="container is-max-desktop">
 
+            <h2 class="title is-3 has-text-centered">Experiments</h2>
             <!-- color -->
             <div class="columns is-centered">
                 <div class="column is-full-width">
@@ -441,8 +446,8 @@
     <!-- Method & Workflow -->
     <section class="hero is-light">
         <div class="hero-body">
+            <h2 class="title is-3 has-text-centered">Method</h2>
             <div class="container is-max-desktop has-text-centered">
-                <h2 class="title is-3">Method</h2>
                 <div class="has-text-justified">
                     <!-- <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%">
             <source src="./video_assets/framework.mp4" type="video/mp4">
@@ -450,13 +455,29 @@
                 </div>
                 <div class="content has-text-justified">
                     <p>
-                        Existing inversion-based editing methods are limited for real-time and real-world language-driven image editing applications, and DDCM offers an alternative to address these limitations, introducing an Inversion-Free Image Editing (InfEdit) method. InfEdit
-                        starts from a random terminal noise <i>z<sup>src</sup><sub>&tau;<sub>1</sub></sub> = z<sup>tgt</sup><sub>&tau;<sub>1</sub></sub> &sim; N(0, I)</i>. The source branch follows the DDCM sampling process without
-                        explicit inversion, and we directly compute the distance &Delta;&epsilon;<sup>cons</sup> between &epsilon;<sup>cons</sup> the &epsilon;<sub>&theta;</sub><sup>src</sup> (the predicted noise to reconstruct a z<sub>0</sub><sup>src</sup>).
-                        For the target branch, we first compute the &epsilon;<sub>&theta;</sub><sup>tgt</sup> to predict z<sub>0</sub><sup>tgt</sup>, and then calibrate the predicted target initial with the same &Delta;&epsilon;<sup>cons</sup>.<br>
+                        We make an attempt to eliminate the inversion process and introduce Denoising Diffusion Consistent Model (DDCM), a sampling strategy that enables virtual inversion. 
+                        DDCM leverages a diffusion process that significantly enhances consistency throughout the image generation phases, ensuring fidelity and speed in transforming and refining visual content. 
+                    </p>
+                </div>
+                <div class="content has-text-centered" style="display: flex; justify-content: center; align-items: center;">
+                    <div style="width: 45%; margin-right: 5%;">
+                        <img src="./image_assets/method/ddcm_tiny.png" style="width: 100%; margin-bottom: 7%;">
+                        <img src="./image_assets/method/algo1.png" style="width: 100%;"> 
+                    </div>
+                    <div style="width: 45%;">
+                        <img src="./image_assets/method/algo2.png" style="width: 100%;">
+                    </div>
+                </div>
+                
+                <div class="content has-text-justified">
+                    <p>
+                        We also present Unified Attention Control (UAC) for tuning-free image editing through natural language that integrates cross-attention and self-attention control within a unified framework. 
                     </p>
                 </div>
 
+                <div class="content has-text-centered">
+                    <img src="./image_assets/method/UAC.png" style="width: 60%; margin-right: 5%"> <img src="./image_assets/method/algo3.png" width="30%">
+                </div>
                 <span class="link-block">
           <a href="./method.html" class="external-link button is-normal is-rounded is-dark">
             <span>Detail</span>
