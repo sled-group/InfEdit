@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- HTML Meta Tags -->
+  <title>Inversion-Free Image Editing with Natural Language</title>
+  <meta name="description" content="Inversion-Free Image Editing with Natural Language">
+
+  <!-- Facebook Meta Tags -->
+  <!-- <meta property="og:url" content="https://rich-text-to-image.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Expressive Text-to-Image Generation with Rich Text">
+  <meta property="og:description" content="Expressive Text-to-Image Generation with Rich Text">
+  <meta property="og:image" content="https://rich-text-to-image.github.io/image_assets/preview.jpg"> -->
+
+  <!-- Twitter Meta Tags -->
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="rich-text-to-image.github.io">
+  <meta property="twitter:url" content="https://rich-text-to-image.github.io/">
+  <meta name="twitter:title" content="Expressive Text-to-Image Generation with Rich Text">
+  <meta name="twitter:description" content="Expressive Text-to-Image Generation with Rich Text">
+  <meta name="twitter:image" content="https://rich-text-to-image.github.io/image_assets/preview.jpg"> -->
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="./assets/js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9VZKE74FPW');
+  </script>
+  <title>Inversion-Free Image Editing with Natural Language</title>
+
+  <link href="./assets/css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/tab_gallery.css">
+  <!-- <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css"> -->
+  <link rel="stylesheet" href="./assets/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/juxtapose.css">
+  <link rel="stylesheet" href="./assets/css/image_card_fader.css">
+  <link rel="stylesheet" href="./assets/css/image_card_slider.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Sofia ' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=VT323 ' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair Display ' rel='stylesheet'>
+
+</head>
+
+
+
+<body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Inversion-Free Image Editing <br> with Natural Language</h1>
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://songweige.github.io/">Songwei Ge</a><sup>&#128034;</sup>&nbsp</span>
+              <span class="author-block">
+                <a href="https://taesung.me/">Taesung Park</a><sup><img
+                    src="assets/icons/Adobe_Corporate_Horizontal_Red_HEX.svg" width="14" /></sup>&nbsp
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.cmu.edu/~junyanz/">Jun-Yan Zhu</a><sup><img
+                    src="assets/icons/cmu-scotty-icon.png" width="14" /></sup>&nbsp</span>
+              <span class="author-block">
+                <a href="https://jbhuang0604.github.io/">Jia-Bin Huang</a><sup>&#128034;</sup>&nbsp
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>&#128034;</sup>University of Maryland, College Park &nbsp</span>
+              <span class="author-block"><sup><img src="assets/icons/Adobe_Corporate_Horizontal_Red_HEX.svg"
+                    width="14" /></sup>Adobe Research &nbsp</span>
+              <span class="author-block"><sup><img src="assets/icons/cmu-scotty-icon.png" width="14" /></sup>Carnegie
+                Mellon University</span>
+            </div> -->
+            <div class="is-size-5 publication-authors">
+              <p>
+                  <span class="author-block">
+                  <a href="https://sihanxu.github.io/">Sihan Xu</a><sup>1</sup><a href="#fn1" id="ref1">*</a>&nbsp</span>
+                  <span class="author-block">
+                  <a href="https://h6kplus.github.io/owenhuang.github.io/">Yidong Huang</a><sup>1</sup><a href="#fn1" id="ref1">*</a>&nbsp</span>
+                  <span class="author-block">
+                  <a href="https://www.jiayipan.me/">Jiayi Pan</a><sup>2</sup>&nbsp</span>
+                  <span class="author-block">
+                  <a href="http://ziqiaoma.com/">Ziqiao Ma</a><sup>1<a href="#fn2" id="ref2">&infin;</a></sup>&nbsp</span>
+                  <span class="author-block">
+                  <a href="https://web.eecs.umich.edu/~chaijy/">Joyce Chai</a><sup>1</sup>&nbsp</span>
+              </p>
+          </div>
+          <div class="is-size-5 publication-authors">
+          <p>
+              <span class="author-block">
+              <sup>1</sup>University of Michigan&nbsp</span>
+              <span class="author-block">
+              <sup>2</sup>University of California, Berkeley&nbsp</span>
+           </p>
+          <p id="fn1">* Equal contribution
+              <a href="#ref2"></a>
+          </p>
+          <p id="fn2"><sup>&infin;</sup> Correspondence
+              <a href="#ref2"></a>
+          </p>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+                <span class="link-block">
+                    <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
+                          <path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+                          </path>
+                        </svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                <span class="link-block">
+                    <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://github.com/sled-group/InfEdit" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg="">
+                          <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                          </path>
+                        </svg>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                <span class="link-block">
+                <a href="http://sled-snowbird.eecs.umich.edu/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <svg class="svg-inline--fa fa-edit fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg><!-- <i class="fas fa-edit"></i> Font Awesome fontawesome.com -->
+                    </span>
+                    <span>Demo</span>
+                </a>
+                </span>
+                <span class="link-block">
+                <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-obp"></i>
+                    </span>
+                    <span>BibTex</span>
+                  </a>
+                </span>
+            </br>
+                <span class="link-block">
+                  <a href="./index.html" class="external-link button is-normal is-rounded is-dark">
+                    <span>Main</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./method.html" class="external-link button is-normal is-rounded is-dark">
+                    <span>Method</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./gallery.html" class="external-link button is-normal is-rounded is-dark">
+                    <span>Gallery</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+
+    <!--/ Matting. -->
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4 has-text-centered">Denoising Diffusion Consistent Models</h2>
+          <div class="content has-text-justified">
+            <h4>
+              Comparison with existing methods:
+            </h4>
+          </div>
+          <div class="content has-text-centered">
+            <img src="./image_assets/compare/Appendix1MoreCompare_00.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_01.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_02.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_03.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_04.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_05.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_06.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_07.png" width="150%">
+            <img src="./image_assets/compare/Appendix1MoreCompare_08.png" width="150%">
+            <img src="./image_assets/compare/Appendix5img2img_00.png" width="150%">
+            <img src="./image_assets/compare/Appendix5img2img_01.png" width="150%">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title"><a id="bibtex">BibTeX</a></h2>
+      <pre><code>@</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website adapted from the following <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <script type="text/javascript">
+    var currentMethodList = ['ours', 'plain', 'full', 'aae', 'ip2p', 'p2p'];
+    var currentMethod = "ours";
+
+    function ChangeMethod(idx) {
+      var li_list = document.getElementById("method-view-ul").children;
+      for (i = 0; i < li_list.length; i++) {
+        li_list[i].className = "nav-link";
+      }
+      li_list[idx].className = "nav-link active";
+      currentMethod = currentMethodList[idx];
+
+      var image_livingroom = document.getElementById('image_livingroom');
+      var image_cityscape = document.getElementById('image_cityscape');
+      image_livingroom.src = "./image_assets/footnote/livingroom/livingroom_" + currentMethod + ".jpg";
+      image_cityscape.src = "./image_assets/footnote/cityscape/cityscape_" + currentMethod + ".jpg";
+    }
+    function ChangePrompt(idx) {
+      var li_list = document.getElementById("prompt-view-ul").children;
+      for (i = 0; i < li_list.length; i++) {
+        li_list[i].className = "nav-link";
+      }
+      li_list[idx].className = "nav-link active";
+      var div_livingroom = document.getElementById('div_livingroom');
+      var div_cityscape = document.getElementById('div_cityscape');
+      if (idx == 0) {
+        div_livingroom.style.display = "";
+        div_cityscape.style.display = "none";
+      } else {
+        div_livingroom.style.display = "none";
+        div_cityscape.style.display = "";
+      }
+    }
+  </script>
+
+  <script src="./assets/js/juxtapose.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script defer="" src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/magnifier.js"></script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
