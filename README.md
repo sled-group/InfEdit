@@ -1,4 +1,4 @@
-# InfEdit%20Handbook%20(Draft)
+# Handbook (Draft)
 
 # Edit Config
 
