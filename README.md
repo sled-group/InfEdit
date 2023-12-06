@@ -9,8 +9,8 @@
 | Target Prompt | prompt used to describe the output image (shoude be similar with the source prompt,  including what you want to edit to, see examples) |
 | Negative Prompt & Guidance scale | Classfier-free Guidance setting. Negative prompt is used to exclude the features that you dont want to generate. |
 | Target blend & Thresh | When you only want to edit some part of the whole image, you should use target blend. Target blend should come from a part of the Target prompt, used to describe the area of the image that you want to edit(see example). A higher threshold means a smaller editing area, while a lower threshold means a larger area. |
-| Mutual blend & Thresh | When you find the model edit something you want to keep, you should use source blend. Mutual blend should come from a common part of the Source prompt and Target prompt, used to describe the area of the image that you want preserve (exactly same, see example). A higher threshold means a smaller area that preserved, while a lower threshold means a larger area. |
-| Same part of Target blend & Mutual blend | the same part of target blend and source blend represents the thing that you want to partially edit(e.g. postures, views, actions). (See example) |
+| Source blend & Thresh | When you find the model edit something you want to keep, you should use source blend. Source blend should come from a common part of the Source prompt and Target prompt, used to describe the area of the image that you want preserve (exactly same, see example). A higher threshold means a smaller area that preserved, while a lower threshold means a larger area. |
+| Same part of Target blend & Source blend | the same part of target blend and source blend represents the thing that you want to partially edit(e.g. postures, views, actions). (See example) |
 | Cross replace steps | Cross-attention control steps. A smaller value means weaker control, which means less consistency. |
 | Self replace steps | Self-attention control steps. A smaller value means weaker control, which means less consistency. |
 | Denoising Model & Strength | The denoising intensity, the smaller the value, the less modifications and higher consistency. Too low intensity may lead to modification failure. |
@@ -67,7 +67,7 @@ And positive prompt plays the opposite effect. If we input ”red” as our posi
 
 ### Now let's take a closer look at how each parameter works.
 
-## Target & Mutual Blend
+## Target & Source Blend
 
 ### Target blend: Like Prompt2Prompt, we support target blend in our editing, and here is an example.
 
@@ -85,7 +85,7 @@ If you want to expand the scope of editing, you can reduce the threshold of targ
 
 ![Untitled](docs/InfEdit%20Handbook%20(Draft)/Untitled%2011.png)
 
-### Mutual blend: Sometimes you may find that the model edits something you don’t want to edit, and you really want to keep those stuffs, you can use source blend.
+### Source blend: Sometimes you may find that the model edits something you don’t want to edit, and you really want to keep those stuffs, you can use source blend.
 
 For example, if we want to change the background of the following example from the grass to a forest, we may use prompts like below:
 
