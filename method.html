@@ -324,15 +324,6 @@
             As shown in Figure 2a, they calculate the distance between the source branch and the inversion branch (or directly sampled from q-sampling in CycleDiffusion), 
             and calibrate the target branch with this computed distance at each \(t\).
           </p>
-          <div class="content has-text-centered">
-            <img src="./image_assets/method/inversion.png" width="150%">
-              <p class="has-text-centered">
-                <b>Figure 1. </b>While DDIM is prone to reconstruction error and requires iterative inversion, DDCM accepts any random noise to start with. 
-                It introduces a non-Markovian forward process in which \(z_t\) directly points to the ground truth \(z_0\) without neural prediction, 
-                and \(z_{t-1}\) does not depend on the previous step \(z_t\) like a consistency model. 
-              </p>
-          </div>
-
           
         </div>
       </div>
@@ -392,6 +383,16 @@
             and \(z_{t-1}\) does not depend on the previous step \(z_t\) like a consistency model.
             We name this <b>Denoising Diffusion Consistent Model</b> (DDCM).
           </p>
+
+          <div class="content has-text-centered">
+            <img src="./image_assets/method/inversion.png" width="150%">
+              <p class="has-text-centered">
+                <b>Figure 1. </b>While DDIM is prone to reconstruction error and requires iterative inversion, DDCM accepts any random noise to start with. 
+                It introduces a non-Markovian forward process in which \(z_t\) directly points to the ground truth \(z_0\) without neural prediction, 
+                and \(z_{t-1}\) does not depend on the previous step \(z_t\) like a consistency model. 
+              </p>
+          </div>
+          
           <br>
           <div class="content has-text-justified">
               <h4>
