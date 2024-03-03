@@ -1,6 +1,8 @@
 # Inversion-Free Image Editing with Natural Language
 
-### We are still working on cleaning the code, but the code for the demo is currently available at [Huggingface](https://huggingface.co/spaces/sled-umich/InfEdit/tree/main).
+### Code for the demo is currently available at [Huggingface](https://huggingface.co/spaces/sled-umich/InfEdit/tree/main).
+
+We are still working on the github version.
 
 ### [Project Page](https://sled-group.github.io/InfEdit/) | [Paper](http://arxiv.org/) | [🤗Demo🔥](https://huggingface.co/spaces/sled-umich/InfEdit) | [Handbook](https://github.com/sled-group/InfEdit/tree/website)
 
