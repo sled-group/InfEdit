@@ -111,11 +111,6 @@ def get_mapper(x: str, y: str, specifier, tokenizer, encoder, device, max_len=77
     alpha_e = torch.zeros_like(alphas)
     alpha_m = torch.zeros_like(alphas)
     
-    # print("mapper of")
-    # print("<begin> "+x+" <end>")
-    # print("<begin> "+y+" <end>")
-    # print(mapper[:len(y_seq)])
-    # print(alphas[:len(y_seq)])
 
     x = tokenizer(
             x,
@@ -159,10 +154,6 @@ def get_mapper(x: str, y: str, specifier, tokenizer, encoder, device, max_len=77
                     alpha_e[max_t] = 1
         i += 1
         
-    # replace_alpha, replace_mapper = get_replace_inds(x_seq, y_seq, m_seq, m_seq)
-    # if replace_mapper != []:
-    #     mapper[replace_alpha]=torch.tensor(replace_mapper,device=mapper.device)
-    #     alpha_m[replace_alpha]=1
     
     i = 1
     j = 1
@@ -190,12 +181,6 @@ def get_mapper(x: str, y: str, specifier, tokenizer, encoder, device, max_len=77
       else:
         raise ValueError("mutual prompt not found in target prompt")
 
-    # print("fixed mapper:")
-    # print(mapper[:len(y_seq)])
-    # print(alphas[:len(y_seq)])
-    # print(m[:len(y_seq)])
-    # print(alpha_e[:len(y_seq)])
-    # print(alpha_m[:len(y_seq)])
     return mapper, alphas, m, alpha_e, alpha_m
 
 
