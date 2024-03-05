@@ -86,8 +86,6 @@ def register_attention_control(model, controller):
             attention_probs = attn.get_attention_scores(q, k, attention_mask)
             if is_cross:
                 attention_probs  = controller(attention_probs , is_cross, self.place_in_unet)
-            # else:
-            #     out = controller.self_attn_forward(q, k, v, sim, attention_probs , is_cross, self.place_in_unet, attn.heads, scale=attn.scale)
             hidden_states = torch.bmm(attention_probs, v)
             hidden_states = attn.batch_to_head_dim(hidden_states)
 

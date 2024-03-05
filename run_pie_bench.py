@@ -29,9 +29,6 @@ if is_colab:
     scheduler = LCMScheduler.from_config(model_id_or_path, subfolder="scheduler")
     pipe = EditPipeline.from_pretrained(model_id_or_path, scheduler=scheduler, torch_dtype=torch_dtype)
 else:
-    # import streamlit as st
-    # scheduler = DDIMScheduler.from_config(model_id_or_path, use_auth_token=st.secrets["USER_TOKEN"], subfolder="scheduler")
-    # pipe = CycleDiffusionPipeline.from_pretrained(model_id_or_path, use_auth_token=st.secrets["USER_TOKEN"], scheduler=scheduler, torch_dtype=torch_dtype)
     scheduler = LCMScheduler.from_config(model_id_or_path, use_auth_token=os.environ.get("USER_TOKEN"), subfolder="scheduler")
     pipe = EditPipeline.from_pretrained(model_id_or_path, use_auth_token=os.environ.get("USER_TOKEN"), scheduler=scheduler, torch_dtype=torch_dtype)
 
@@ -45,17 +42,10 @@ if torch.cuda.is_available():
 class LocalBlend:
     
     def get_mask(self,x_t,maps,word_idx, thresh, i):
-        # print(word_idx)
-        # print(maps.shape)
-        # for i in range(0,self.len):
-        #     self.save_image(maps[:,:,:,:,i].mean(0,keepdim=True),i,"map")
         maps = maps * word_idx.reshape(1,1,1,1,-1)
         maps = (maps[:,:,:,:,1:self.len-1]).mean(0,keepdim=True)
-        # maps = maps.mean(0,keepdim=True)
         maps = (maps).max(-1)[0]
-        # self.save_image(maps,i,"map")
         maps = nnf.interpolate(maps, size=(x_t.shape[2:]))
-        # maps = maps.mean(1,keepdim=True)\
         maps = maps / maps.max(2, keepdim=True)[0].max(3, keepdim=True)[0]
         mask = maps > thresh
         return mask
@@ -78,8 +68,6 @@ class LocalBlend:
         maps = attention_store["down_cross"][2:4] + attention_store["up_cross"][:3]
         h,w = x_t.shape[2],x_t.shape[3]
         h , w = ((h+1)//2+1)//2, ((w+1)//2+1)//2
-        # print(h,w)
-        # print(maps[0].shape)
         maps = [item.reshape(2, -1, 1, h // int((h*w/item.shape[-2])**0.5),  w // int((h*w/item.shape[-2])**0.5), MAX_NUM_WORDS) for item in maps]
         maps = torch.cat(maps, dim=1)
         maps_s = maps[0,:]
@@ -411,7 +399,6 @@ def main():
     annotation_file_name = os.path.join(root,"mapping_file.json")
     with open (annotation_file_name) as f:
         annotation_file = json.load(f)
-    # print(annotation_file)
     for annotation_idx , annotation  in annotation_file.items():
         print(annotation_idx)
         img_path =os.path.join(root, "annotation_images",annotation["image_path"] )

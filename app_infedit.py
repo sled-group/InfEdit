@@ -29,9 +29,6 @@ if is_colab:
     scheduler = LCMScheduler.from_config(model_id_or_path, subfolder="scheduler")
     pipe = EditPipeline.from_pretrained(model_id_or_path, scheduler=scheduler, torch_dtype=torch_dtype)
 else:
-    # import streamlit as st
-    # scheduler = DDIMScheduler.from_config(model_id_or_path, use_auth_token=st.secrets["USER_TOKEN"], subfolder="scheduler")
-    # pipe = CycleDiffusionPipeline.from_pretrained(model_id_or_path, use_auth_token=st.secrets["USER_TOKEN"], scheduler=scheduler, torch_dtype=torch_dtype)
     scheduler = LCMScheduler.from_config(model_id_or_path, use_auth_token=os.environ.get("USER_TOKEN"), subfolder="scheduler")
     pipe = EditPipeline.from_pretrained(model_id_or_path, use_auth_token=os.environ.get("USER_TOKEN"), scheduler=scheduler, torch_dtype=torch_dtype)
 
@@ -45,17 +42,10 @@ if torch.cuda.is_available():
 class LocalBlend:
     
     def get_mask(self,x_t,maps,word_idx, thresh, i):
-        # print(word_idx)
-        # print(maps.shape)
-        # for i in range(0,self.len):
-        #     self.save_image(maps[:,:,:,:,i].mean(0,keepdim=True),i,"map")
         maps = maps * word_idx.reshape(1,1,1,1,-1)
         maps = (maps[:,:,:,:,1:self.len-1]).mean(0,keepdim=True)
-        # maps = maps.mean(0,keepdim=True)
         maps = (maps).max(-1)[0]
-        # self.save_image(maps,i,"map")
         maps = nnf.interpolate(maps, size=(x_t.shape[2:]))
-        # maps = maps.mean(1,keepdim=True)\
         maps = maps / maps.max(2, keepdim=True)[0].max(3, keepdim=True)[0]
         mask = maps > thresh
         return mask
@@ -64,9 +54,7 @@ class LocalBlend:
     def save_image(self,mask,i, caption):
         image = mask[0, 0, :, :]
         image = 255 * image / image.max()
-        # print(image.shape)
         image = image.unsqueeze(-1).expand(*image.shape, 3)
-        # print(image.shape)
         image = image.cpu().numpy().astype(np.uint8)
         image = np.array(Image.fromarray(image).resize((256, 256)))
         if not os.path.exists(f"inter/{caption}"):
@@ -78,8 +66,6 @@ class LocalBlend:
         maps = attention_store["down_cross"][2:4] + attention_store["up_cross"][:3]
         h,w = x_t.shape[2],x_t.shape[3]
         h , w = ((h+1)//2+1)//2, ((w+1)//2+1)//2
-        # print(h,w)
-        # print(maps[0].shape)
         maps = [item.reshape(2, -1, 1, h // int((h*w/item.shape[-2])**0.5),  w // int((h*w/item.shape[-2])**0.5), MAX_NUM_WORDS) for item in maps]
         maps = torch.cat(maps, dim=1)
         maps_s = maps[0,:]
@@ -504,9 +490,6 @@ with gr.Blocks(css=css) as demo:
                 img = gr.Image(label="Input image", height=512, type="pil")
 
                 image_out = gr.Image(label="Output image", height=512)
-                # gallery = gr.Gallery(
-                #     label="Generated images", show_label=False, elem_id="gallery"
-                # ).style(grid=[1], height="auto")
 
         with gr.Column(scale=45):
             
@@ -554,7 +537,6 @@ with gr.Blocks(css=css) as demo:
                 with gr.Group():
                     api_key = gr.Textbox(label="YOUR OPENAI API KEY", placeholder="sk-xxx", lines = 1, type="password")
                     user_instruct = gr.Textbox(label=guide_str, placeholder="The image shows an apple on the table and I want to change the apple to a banana.", lines = 3)
-                    # source_prompt, target_prompt, local, mutual = get_params(api_key, user_instruct)
                     with gr.Row():
                         generate4 = gr.Button(value="Run")
 
@@ -612,9 +594,5 @@ with gr.Blocks(css=css) as demo:
           cross_replace_steps, self_replace_steps, 
           thresh_e, thresh_m, denoise],
         image_out, inference, examples_per_page=20)
-# if not is_colab:
-#     demo.queue(concurrency_count=1)
-    
-# demo.launch(debug=False, share=False,server_name="0.0.0.0",server_port = 80)
 demo.launch(debug=False, share=False)
 
