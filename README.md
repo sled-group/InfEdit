@@ -1,7 +1,7 @@
 # Inversion-Free Image Editing with Natural Language
 
 
-### [Project Page](https://sled-group.github.io/InfEdit/) | [Paper](http://arxiv.org/) | [🤗Demo🔥](https://huggingface.co/spaces/sled-umich/InfEdit) | [Handbook](https://github.com/sled-group/InfEdit/tree/website)
+### [Project Page](https://sled-group.github.io/InfEdit/) | [Paper](https://arxiv.org/abs/2312.04965) | [🤗Demo🔥](https://huggingface.co/spaces/sled-umich/InfEdit) | [Handbook](https://github.com/sled-group/InfEdit/tree/website)
 
 Sihan Xu*, Yidong Huang*, Jiayi Pan, Ziqiao Ma, Joyce Chai  
 University of Michigan, Ann Arbor  
