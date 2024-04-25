@@ -12,6 +12,8 @@ import utils
 import numpy as np
 import seq_aligner
 import math
+import argparse
+import json
 
 LOW_RESOURCE = False
 MAX_NUM_WORDS = 77
@@ -262,7 +264,7 @@ class AttentionControlEdit(AttentionStore, abc.ABC):
             attn_replace_new = self.replace_cross_attention(attn_masa, attn_repalce) 
             attn_base_store = self.replace_cross_attention(attn_base, attn_repalce)
             if (self.cross_replace_steps >= ((self.cur_step+self.start_steps+1)*1.0 / self.num_steps) ):
-                attn[1] = attn_base_store
+                attn[1] = attn_replace_new
             attn_store=torch.cat([attn_base_store,attn_replace_new])
             attn = attn.reshape(self.batch_size * h, *attn.shape[2:])
             attn_store = attn_store.reshape(2 *h, *attn_store.shape[2:])
@@ -325,20 +327,9 @@ def get_equalizer(text: str, word_select: Union[int, Tuple[int, ...]], values: U
         equalizer[:, inds] = values
     return equalizer
 
-
-def inference(img, source_prompt, target_prompt,
-          local, mutual,
-          positive_prompt, negative_prompt,
-          guidance_s, guidance_t,
-          num_inference_steps,
-          width, height, seed, strength,          
-          cross_replace_steps, self_replace_steps, 
-          thresh_e, thresh_m, denoise, user_instruct="", api_key=""):
-    print(img)
-    if user_instruct != "" and api_key != "":
-        source_prompt, target_prompt, local, mutual, replace_steps, num_inference_steps = get_params(api_key, user_instruct)
-        cross_replace_steps = replace_steps
-        self_replace_steps = replace_steps
+def inference(source_prompt, target_prompt, positive_prompt, negative_prompt, local, mutual, guidance_s, guidance_t, num_inference_steps=10,
+              width=512, height=512, seed=0, img=None, strength=0.7,
+               cross_replace_steps=0.8, self_replace_steps=0.4, eta=0.1, thresh_e=0.3, thresh_m=0.3, denoise=True):
 
     torch.manual_seed(seed)
     ratio = min(height / img.height, width / img.width)
@@ -364,7 +355,7 @@ def inference(img, source_prompt, target_prompt,
                    negative_prompt=negative_prompt,
                    image=img,
                    num_inference_steps=num_inference_steps,
-                   eta=1,
+                   eta=eta,
                    strength=strength,
                    guidance_scale=guidance_t,
                    source_guidance_scale=guidance_s,
@@ -402,12 +393,12 @@ def main():
     for annotation_idx , annotation  in annotation_file.items():
         print(annotation_idx)
         img_path =os.path.join(root, "annotation_images",annotation["image_path"] )
-        if os.path.exists( os.path.join(target, "annotation_images", annotation["image_path"])):
-            continue
+        # if os.path.exists( os.path.join(target, "annotation_images", annotation["image_path"])):
+        #     continue
         imagein = Image.open(img_path)
         imagein = imagein.convert("RGB")
         source_prompt =  annotation["original_prompt"]
-        target_prompt =  annotation["original_prompt"]
+        target_prompt =  annotation["editing_prompt"]
         if annotation["blended_word"]!="":
             local = annotation["blended_word"].split(" ")[1]
         else:
